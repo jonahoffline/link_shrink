@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+Signal.trap("INT") { exit 1 }
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib/'
+require 'link_shrink'
+require 'link_shrink/cli'
+
+puts LinkShrink::CLI.new(ARGV).parse
