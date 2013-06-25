@@ -2,8 +2,6 @@ language: ruby
 rvm:
   - 1.9.3
 script: 'bundle exec rake test'
-before_install:
-  - gem install bundler
 rvm:
   - 1.9.3
 notifications:
