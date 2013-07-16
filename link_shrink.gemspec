@@ -22,6 +22,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'typhoeus', '~> 0.6.3'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
-  spec.add_development_dependency 'rspec', '~> 2.14.0'
+  spec.add_development_dependency 'rspec', '~> 2.14.1'
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'autotest-standalone', '~> 4.5.11'
+  spec.add_development_dependency 'autotest-fsevent', '~> 0.2.8'
+  spec.add_development_dependency 'rspec-nc', '~> 0.0.6'
+  spec.add_development_dependency 'simplecov', '~> 0.7.1'
+  spec.add_development_dependency 'simplecov-gem-adapter', '~> 1.0.1'
 end

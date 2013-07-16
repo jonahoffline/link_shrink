@@ -14,6 +14,7 @@ module LinkShrink
     # @param opts [OptionParser]
     def set_options(opts)
       @json        = false
+      @qr_code     = false
       opts.version = LinkShrink::VERSION
       opts.banner  = <<MSG
 Usage: link_shrink [OPTION] [URL]
@@ -25,6 +26,10 @@ MSG
       opts.set_program_name 'LinkShrink'
       opts.on_head('-j', '--json', 'return JSON response') do
         @json = :true
+      end
+
+      opts.on_head('-q', '--qrcode', 'return QR Code') do
+        @qr_code = :true
       end
 
       opts.on_tail('-v', '--version', 'display the version of LinkShrink and exit') do
@@ -48,7 +53,7 @@ MSG
     end
 
     def process_url
-      LinkShrink.shrink_url(@args.last, { json: @json })
+      LinkShrink.shrink_url(@args.last, { json: @json, qr_code: @qr_code })
     end
 
     def url_present?

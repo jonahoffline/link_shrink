@@ -20,6 +20,15 @@ LinkShrink.shrink_url("http://www.ruby-lang.org")
 
 LinkShrink.shrink_url("http://www.ruby-lang.org", { :json => true })
 => "{\"kind\":\"urlshortener#url\",\"id\":\"http://goo.gl/MprR\",\"longUrl\":\"http://www.ruby-lang.org/\"}"
+
+LinkShrink.shrink_url("http://www.ruby-lang.org", { :qr_code => true })
+=> "http://goo.gl/QuXj.qr"
+
+LinkShrink.shrink_url("http://www.ruby-lang.org", { :qr_code => true, image_size: '200x200' })
+=> "http://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=H&chl=http://goo.gl/MprR"
+
+LinkShrink.shrink_url("http://www.ruby-lang.org", { json: true, qr_code: true, image_size: '300x300' })
+=> "{\"kind\":\"urlshortener#url\",\"id\":\"http://goo.gl/MprR\",\"longUrl\":\"http://www.ruby-lang.org/\",\"qr_code\":\"http://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=http://goo.gl/MprR\"}"
 ```
 
 
@@ -31,6 +40,7 @@ In your terminal:
 ### Command-Line Options ###
 
   * -j, --json        - return JSON response
+  * -q, --qrcode      - return QR Code
   * -h, --help        - show help message
 
 ## Author
