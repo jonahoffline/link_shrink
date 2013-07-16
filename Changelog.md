@@ -16,8 +16,9 @@ Released July 16, 2013 ([0.0.2](https://github.com/jonahoffline/link_shrink/tree
 * Add --qrcode option into CLI for command-line application.
 * Update README.
 * Add Changelog.
-* Update gemspec dependencies (RSpec
-* Add BadgeFury and Gemnasium badges to README.
+* Update gemspec development-dependencies (RSpec)
+* Add new gemspec development-dependencies (autotest-test, rspec-nc, simplecov)
+* Add BadgeFury, Gemnasium, CodeClimate and Travis-CI badges to README.
 
 ## 0.0.1
 
