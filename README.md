@@ -8,6 +8,27 @@ Installation
 
     $ gem install link_shrink
 
+
+Setup
+-------
+
+Works best with a Google URL API key. You can sign-up for a free one at
+[Google URL API](https://code.google.com/apis/console)
+
+1. In the Services pane, activate the Google URL Shortener API;
+if the Terms of Service appear, read and accept them.
+
+2. Go to the [API Access pane](https://code.google.com/apis/console#access). The API key is near the bottom of that pane,
+in the section titled "Simple API Access."
+
+#### Configuration ####
+
+Set your key as an environment variable:
+
+    $ export GOOGLE_URL_KEY='your_api_key_here'
+
+You could also save it in your ~/.bash_profile
+
 ## Usage ##
 
 Ruby:
