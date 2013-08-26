@@ -3,7 +3,7 @@ require 'spec_helper'
 describe LinkShrink do
   include_examples 'shared_examples'
 
-  describe '.shrink_url' do
+  describe '.shrink_url', :vcr => 'google_url' do
     it 'creates a short url' do
       expect(link_shrink.shrink_url(url)).to eq(short_url)
     end
