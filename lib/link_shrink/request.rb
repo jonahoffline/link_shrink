@@ -10,7 +10,7 @@ module LinkShrink
 
     module_function
 
-    def process_request(url, options, shrinker = LinkShrink::Shrinkers::Google.new)
+    def process_request(url, options, shrinker = Config.api)
       process_response(request(url, shrinker).body, options, shrinker)
     end
 
