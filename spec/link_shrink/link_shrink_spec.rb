@@ -74,4 +74,11 @@ describe LinkShrink do
       end
     end
   end
+
+  describe '#configure' do
+    it 'yields to Config' do
+      link_shrink.should_receive(:configure).and_yield(Config)
+      link_shrink.configure { |config| api = 'TinyURL' }
+    end
+  end
 end
