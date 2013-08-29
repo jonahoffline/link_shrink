@@ -36,6 +36,10 @@ module LinkShrink
     LinkShrink::Shrinkers::Google.new.generate_chart_url(new_url, image_size)
   end
 
+  # Yield's to Config for options
+  #
+  # @param api [String] api interface to use
+  # @param api_key [String] api key to use
   def configure
     yield Config
   end
