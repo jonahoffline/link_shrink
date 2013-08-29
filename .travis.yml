@@ -5,6 +5,7 @@ rvm:
 - 2.0.0
 - ruby-head
 - jruby-19mode
+- rbx-19mode
 script: bundle exec rake test
 notifications:
   email: false
@@ -16,6 +17,8 @@ notifications:
 env:
   global:
     secure: bPqqN6twAJeRIpUEGozFIV3+dW2TSRxYQRrQhpzJ6Bx2ZXmk8UWl1O57Scf9/ZrCjo23MSvWKY1Rt1eyncaUVfzr4PjR6GjUwwdE7SPHQFKvGeNLIlJElzcz1ywcX6RU8+6JPYnx3NxR2O5VM8rf7wLwma00nuaDunM5NgKMMdQ=
+
 matrix:
   allow_failures:
     - rvm: ruby-head
+    - rvm: rbx-19mode
