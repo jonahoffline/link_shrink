@@ -33,7 +33,7 @@ module LinkShrink
   def generate_qr_code(url, options = {})
     new_url    = process_request(url, {})
     image_size = options.fetch(:image_size, {})
-    LinkShrink::Shrinkers::Google.new.generate_chart_url(new_url, image_size)
+    Config.api.generate_chart_url(new_url, image_size)
   end
 
   # Yield's to Config for options
