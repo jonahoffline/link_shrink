@@ -45,7 +45,8 @@ describe LinkShrink::Shrinkers::Google do
 
   describe '#body_parameters' do
     it 'returns body parameters for API request' do
-      expect(link_shrink.body_parameters("http://www.google.com"))
+      link_shrink.stub(:url).and_return('http://www.google.com')
+      expect(link_shrink.body_parameters())
       .to eq("{\"longUrl\":\"http://www.google.com\"}")
     end
   end
