@@ -8,19 +8,15 @@ module LinkShrink
       end
 
       def api_query_parameter
-        { url: sanitize_url(url) }
-      end
-
-      def http_method
-        :get
+        "?url=#{url}"
       end
 
       def content_type
         'text/plain'
       end
 
-      def body_parameters
-        nil
+      def api_url
+        base_url.concat api_query_parameter
       end
     end
   end
