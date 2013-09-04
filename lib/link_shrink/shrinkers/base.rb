@@ -5,6 +5,7 @@ module LinkShrink
     # @author Jonah Ruiz <jonah@pixelhipsters.com>
     # an Abstract Base class for implementing other URL APIs
     class Base
+      attr_reader :url
       # Callback method that dynamically defines a sub_klass method for reference
       # @return [String] inherited class name
       def self.inherited(sub_klass)
@@ -24,13 +25,15 @@ module LinkShrink
       end
 
       # Parameters to be used in API request
-      def body_parameters(url)
-        fail "#{__method__} not implemented"
+      def body_parameters(params = {})
+        nil if params.empty?
       end
 
       # Complete URL with query parameters
       def api_url
         api_key? ? base_url.concat(api_query_parameter) : base_url
+        #api_key? ? base_url : base_url.concat(api_query_parameter)
+        #base_url.concat(api_query_parameter)
       end
 
       # Predicate method for checking if the API key exists
@@ -46,8 +49,20 @@ module LinkShrink
       end
 
       # Encodes URL
-      def sanitize_url(url)
-        URI.encode(url)
+      def sanitize_url(new_url)
+        URI.encode(!!(new_url =~ /^(http?:\/\/)?/) ? new_url : "http://#{new_url}")
+      end
+
+      def http_method
+        :get
+      end
+
+      def content_type
+        'application/json'
+      end
+
+      def url=(new_url)
+        @url = sanitize_url(new_url)
       end
     end
   end
