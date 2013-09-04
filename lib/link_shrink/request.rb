@@ -15,6 +15,7 @@ module LinkShrink
     end
 
     def process_response(response, options, shrinker, json = JSONParser)
+      return response if shrinker.content_type.eql?('text/plain')
       option      = Options.new(options)
       parsed_json = json.parse_json(response)
       plain       = parsed_json['id']
@@ -45,11 +46,12 @@ module LinkShrink
     # @see LinkShrink::Shrinkers::Base#api_url
     # @see LinkShrink::Shrinkers::Base#body_parameters
     def request(url, shrinker)
+      shrinker.url = url
       Typhoeus::Request.new(
         shrinker.api_url,
-        method:  :post,
+        method:  shrinker.http_method,
         body:    shrinker.body_parameters(url),
-        headers: { 'Content-Type' => 'application/json' }
+        headers: { 'Content-Type' => shrinker.content_type }
       ).run
     end
   end
