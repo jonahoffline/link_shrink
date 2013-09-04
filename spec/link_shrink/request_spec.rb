@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe LinkShrink::Request do
   include_examples 'shared_examples'
-  let(:shrinker) { LinkShrink::Shrinkers::Google.new }
+  let(:shrinker) { LinkShrink::Config.api }
   let(:json_default) {{ :json => false }}
 
   describe '.process_request' do
     it 'calls request and returns short link' do
-      expect(link_shrink.process_request(url, json_default)).to eq(short_url)
+      expect(link_shrink.process_request(url, json_default, shrinker))
+      .to eq(short_url)
     end
 
     #it 'calls request and returns short link' do
