@@ -13,18 +13,22 @@ module LinkShrink
         "?key=#{api_key}"
       end
 
-      def body_parameters(url)
-        { 'longUrl' => sanitize_url(url) }.to_json
+      def body_parameters(new_url = nil)
+        { 'longUrl' => url }.to_json
       end
 
       # Generates QR code URL
       # @return [String] QR code url with '150x150' or custom image size
-      def generate_chart_url(url, image_size = {})
-        return "#{url}.qr" if image_size.empty?
+      def generate_chart_url(new_url, image_size = {})
+        return "#{new_url}.qr" if image_size.empty?
 
         chart_url = 'http://chart.googleapis.com/chart'
-        params    = "?cht=qr&chs=#{image_size}&choe=UTF-8&chld=H&chl=#{url}"
+        params    = "?cht=qr&chs=#{image_size}&choe=UTF-8&chld=H&chl=#{new_url}"
         chart_url.concat(params)
+      end
+
+      def http_method
+        :post
       end
     end
   end
