@@ -53,7 +53,7 @@ describe LinkShrink do
     end
 
     context 'when called with json, qr_code and image_size: 300x300' do
-      let(:options) { { json: true, qr_code: true, image_size: "300x300" }}
+      let(:options) { { json: true, qr_code: true, image_size: "300x300" } }
 
       it 'returns QR code in JSON with custom size' do
         expect(link_shrink.shrink_url(url, options))
@@ -75,7 +75,7 @@ describe LinkShrink do
     end
   end
 
-  describe '#configure' do
+  describe '.configure' do
     it 'yields to Config' do
       link_shrink.should_receive(:configure).and_yield(Config)
       link_shrink.configure { |config| api = 'TinyURL' }
