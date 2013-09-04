@@ -16,8 +16,8 @@ describe LinkShrink::Shrinkers::Base do
   end
 
   describe '#body_parameters' do
-    it 'raises error due to other methods not being overridden' do
-      expect{ link_shrink.body_parameters }.to raise_error
+    it 'raises nil when called without arguments' do
+      expect(link_shrink.body_parameters).to eq(nil)
     end
   end
 
