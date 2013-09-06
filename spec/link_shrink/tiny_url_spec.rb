@@ -1,9 +1,10 @@
+##require 'link_shrink/shrinkers/tinyurl'
 #require 'spec_helper'
 #
 #describe LinkShrink::Shrinkers::TinyUrl do
 #  include_examples 'shared_examples'
 #
-#  let(:link_shrink) { LinkShrink::Shrinkers::TinyUrl.new }
+#  let(:link_shrink) { described_class.new }
 #  let(:tiny_url) { 'http://tinyurl.com/api-create.php' }
 #
 #  describe '#sub_klass' do
@@ -19,21 +20,24 @@
 #    end
 #  end
 #
-#  describe '.request' do
-#    it 'integrates with Request' do
-#      expect(LinkShrink::Request.request('http://www.google.com',LinkShrink::Shrinkers::TinyUrl.new).body)
-#      .to eq('http://tinyurl.com/1c2')
+#  describe '#api_url' do
+#    it 'returns full api url' do
+#      link_shrink.stub(:url).and_return('www.google.com')
+#
+#      expect(link_shrink.api_url)
+#      .to eq('http://tinyurl.com/api-create.php?url=www.google.com')
 #    end
 #  end
 #
-#  describe '#http_method' do
-#    it 'returns default :post' do
-#      expect(link_shrink.http_method).to eq(:get)
+#  describe '#api_query_parameter' do
+#    it 'returns query parameter' do
+#      link_shrink.stub(:url).and_return('www.google.com')
+#      expect(link_shrink.api_query_parameter).to eq('?url=www.google.com')
 #    end
 #  end
 #
 #  describe '#content_type' do
-#    it 'returns application/json' do
+#    it 'returns text/plain' do
 #      expect(link_shrink.content_type).to eq('text/plain')
 #    end
 #  end
