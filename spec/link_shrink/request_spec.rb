@@ -60,11 +60,12 @@ describe LinkShrink::Request do
   describe '#parse' do
     context 'when response is text/plain' do
       it 'returns response' do
-        LinkShrink.configure { |c| c.api = 'TinyUrl'}
+        LinkShrink.configure { |c| c.api = 'TinyUrl' }
         response = link_shrink.request(url, shrinker).body
 
         expect(link_shrink.parse(response, {json: false}, shrinker))
         .to eq('http://tinyurl.com/1c2')
+        LinkShrink.configure { |c| c.api = 'Google' }
       end
     end
   end
