@@ -4,6 +4,7 @@
 
 Released September 6, 2013 ([0.0.3](https://github.com/jonahoffline/link_shrink/tree/v0.0.3)).
 
+* Add Coverall gem to gemspec.
 * Add Config class for configuring Shrinker API to use.
 * Add TinyURL Shrinker.
 * Add documentation to TinyUrl, Google and Base class.
