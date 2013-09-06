@@ -13,8 +13,11 @@ module LinkShrink
     # Configures the arguments for the command
     # @param opts [OptionParser]
     def set_options(opts)
+      %w(@json @qr_code @tiny_url)
       @json        = false
       @qr_code     = false
+      @tiny_url    = false
+      @google      = false
       opts.version = LinkShrink::VERSION
       opts.banner  = <<MSG
 Usage: link_shrink [OPTION] [URL]
@@ -24,12 +27,20 @@ Description:
 Options:
 MSG
       opts.set_program_name 'LinkShrink'
+      opts.on_head('-t', '--tinyurl', 'use TinyURL') do
+        @tiny_url = :true
+      end
+
+      opts.on_head('-g', '--google', 'use Google (Default)') do
+        @google = :true
+      end
+
       opts.on_head('-j', '--json', 'return JSON response') do
         @json = :true
       end
 
       opts.on_head('-q', '--qrcode', 'return QR Code') do
-        @qr_code = :true
+        @qr_code = :true unless @tiny_url
       end
 
       opts.on_tail('-v', '--version', 'display the version of LinkShrink and exit') do
@@ -53,11 +64,12 @@ MSG
     end
 
     def process_url
+      LinkShrink.configure { |c| c.api = 'TinyUrl' } if @tiny_url
       LinkShrink.shrink_url(@args.last, { json: @json, qr_code: @qr_code })
     end
 
     def url_present?
-      !!(@args.last =~ /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+      !!(@args.last =~ /^(http?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
     end
   end
 end
