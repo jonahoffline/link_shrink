@@ -1,5 +1,13 @@
 # LinkShrink Changelog
 
+## 0.0.4
+
+Released September 6, 2013 ([0.0.4](https://github.com/jonahoffline/link_shrink/tree/v0.0.4)).
+
+* Refactor complex method in Request module (#process_response).
+* Update version to 0.0.4
+* Add coveralls badge.
+
 ## 0.0.3
 
 Released September 6, 2013 ([0.0.3](https://github.com/jonahoffline/link_shrink/tree/v0.0.3)).
