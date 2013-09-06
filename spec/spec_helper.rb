@@ -1,6 +1,8 @@
 require 'simplecov'
 require 'simplecov-gem-adapter'
+require 'coveralls'
 
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start 'gem'
 require 'webmock/rspec'
 require 'vcr'
