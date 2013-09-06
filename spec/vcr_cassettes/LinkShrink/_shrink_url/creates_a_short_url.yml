@@ -88,4 +88,47 @@ http_interactions:
         \"longUrl\": \"http://www.google.com/\"\n}\n"
     http_version: 
   recorded_at: Wed, 28 Aug 2013 05:11:01 GMT
+- request:
+    method: post
+    uri: https://www.googleapis.com/urlshortener/v1/url?key=12345
+    body:
+      encoding: UTF-8
+      string: ! '{"longUrl":"http://www.google.com"}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Fri, 06 Sep 2013 08:25:29 GMT
+      Expires:
+      - Fri, 06 Sep 2013 08:25:29 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! "{\n \"error\": {\n  \"errors\": [\n   {\n    \"domain\": \"usageLimits\",\n
+        \   \"reason\": \"keyInvalid\",\n    \"message\": \"Bad Request\"\n   }\n
+        \ ],\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n }\n}\n"
+    http_version: 
+  recorded_at: Fri, 06 Sep 2013 08:25:30 GMT
 recorded_with: VCR 2.5.0
