@@ -52,12 +52,12 @@ module LinkShrink
     # Calls URL API
     # @see LinkShrink::Shrinkers::Base#api_url
     # @see LinkShrink::Shrinkers::Base#body_parameters
-    def request(url, shrinker)
-      shrinker.url = url
+    def request(new_url, shrinker)
+      shrinker.url = new_url
       Typhoeus::Request.new(
         shrinker.api_url,
         method:  shrinker.http_method,
-        body:    shrinker.body_parameters(url),
+        body:    shrinker.body_parameters(shrinker.url),
         headers: { 'Content-Type' => shrinker.content_type }
       ).run
     end
