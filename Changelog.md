@@ -1,5 +1,17 @@
 # LinkShrink Changelog
 
+## 0.0.3
+
+Released September 6, 2013 ([0.0.3](https://github.com/jonahoffline/link_shrink/tree/v0.0.3)).
+
+* Add Config class for configuring Shrinker API to use.
+* Add TinyURL Shrinker.
+* Add documentation to TinyUrl, Google and Base class.
+* Add new options for command-line application.
+* Update README.
+* Refactor Shrinker Base class and the Google class.
+* Added 2.0 and JRuby support through TravisCI.
+
 ## 0.0.2
 
 Released July 16, 2013 ([0.0.2](https://github.com/jonahoffline/link_shrink/tree/v0.0.2)).
