@@ -1,5 +1,5 @@
-LinkShrink [![Build Status](https://travis-ci.org/jonahoffline/link_shrink.png?branch=master)](https://travis-ci.org/jonahoffline/link_shrink) [![Gem Version](https://badge.fury.io/rb/link_shrink.png)](http://badge.fury.io/rb/link_shrink) [![Dependency Status](https://gemnasium.com/jonahoffline/link_shrink.png)](https://gemnasium.com/jonahoffline/link_shrink) [![Code Climate](https://codeclimate.com/github/jonahoffline/link_shrink.png)](https://codeclimate.com/github/jonahoffline/link_shrink)
-=================
+# LinkShrink 
+[![Build Status](https://travis-ci.org/jonahoffline/link_shrink.png?branch=master)](https://travis-ci.org/jonahoffline/link_shrink) [![Gem Version](https://badge.fury.io/rb/link_shrink.png)](http://badge.fury.io/rb/link_shrink) [![Dependency Status](https://gemnasium.com/jonahoffline/link_shrink.png)](https://gemnasium.com/jonahoffline/link_shrink) [![Coverage Status](https://coveralls.io/repos/jonahoffline/link_shrink/badge.png?branch=master)](https://coveralls.io/r/jonahoffline/link_shrink?branch=master) [![Code Climate](https://codeclimate.com/github/jonahoffline/link_shrink.png)](https://codeclimate.com/github/jonahoffline/link_shrink)
 
 A Ruby Gem and Command-Line Application for shrinking those long and nasty links into a shorter URL
 
@@ -67,7 +67,6 @@ LinkShrink::Config.api = 'TinyUrl'
 
 LinkShrink.shrink_url('http://www.google.com')
 => "http://tinyurl.com/1c2"
-
 
 ```
 
