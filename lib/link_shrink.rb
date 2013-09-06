@@ -4,6 +4,7 @@ require 'link_shrink/request'
 require 'link_shrink/json_parser'
 require 'link_shrink/shrinkers/base'
 require 'link_shrink/shrinkers/google'
+require 'link_shrink/shrinkers/tinyurl'
 require 'link_shrink/config'
 
 # @author Jonah Ruiz <jonah@pixelhipsters.com>
@@ -41,6 +42,6 @@ module LinkShrink
   # @param <config> [String] api interface to use
   # @param <api_key> [String] api key to use
   def configure
-    yield Config
+    yield LinkShrink::Config if block_given?
   end
 end
