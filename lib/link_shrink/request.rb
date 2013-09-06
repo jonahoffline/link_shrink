@@ -11,7 +11,15 @@ module LinkShrink
     module_function
 
     def process_request(url, options, shrinker = LinkShrink::Config.api)
-      process_response(request(url, shrinker).body, options, shrinker)
+      parse(request(url, shrinker).body, options, shrinker)
+    end
+
+    def parse(response, options, shrinker)
+      if shrinker.content_type.eql?('text/plain')
+        response
+      else
+        process_response(response, options, shrinker)
+      end
     end
 
     def process_response(response, options, shrinker, json = JSONParser)
