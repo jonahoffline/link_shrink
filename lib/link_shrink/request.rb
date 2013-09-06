@@ -23,7 +23,6 @@ module LinkShrink
     end
 
     def process_response(response, options, shrinker, json = JSONParser)
-      return response if shrinker.content_type.eql?('text/plain')
       option      = Options.new(options)
       parsed_json = json.parse_json(response)
       plain       = parsed_json['id']
