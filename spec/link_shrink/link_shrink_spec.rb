@@ -52,12 +52,28 @@ describe LinkShrink do
       end
     end
 
+    context 'when called with no qr_code and image_size: 200x200' do
+      it 'returns QR code link with custom size' do
+        expect(link_shrink.shrink_url(url, {:image_size => "200x200"}))
+        .to eq(chart_url)
+      end
+    end
+
     context 'when called with json, qr_code and image_size: 300x300' do
       let(:options) { { json: true, qr_code: true, image_size: "300x300" } }
 
       it 'returns QR code in JSON with custom size' do
         expect(link_shrink.shrink_url(url, options))
         .to eq(json_qr_code_custom)
+      end
+    end
+
+    context 'when API is down' do
+      it 'raises rescue exception' do
+        link_shrink.stub(:request).and_return(nil)
+
+        expect(link_shrink.shrink_url('www.google.com'))
+        .to eq('Problem generating short URL. Try again.')
       end
     end
   end
@@ -76,9 +92,15 @@ describe LinkShrink do
   end
 
   describe '.configure' do
-    it 'yields to Config' do
-      link_shrink.should_receive(:configure).and_yield(LinkShrink::Config)
-      link_shrink.configure { |config| api = 'TinyURL' }
+    context 'when passed a block' do
+      it 'yields to Config' do
+        expect { |c| link_shrink.configure(&c) }.to yield_control
+      end
+
+      it 'sets API Shrinker' do
+        link_shrink.should_receive(:configure).and_yield(LinkShrink::Config)
+        link_shrink.configure { |config| api = 'TinyURL' }
+      end
     end
   end
 end
