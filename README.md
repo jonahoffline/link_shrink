@@ -50,6 +50,25 @@ LinkShrink.shrink_url("http://www.ruby-lang.org", { :qr_code => true, image_size
 
 LinkShrink.shrink_url("http://www.ruby-lang.org", { json: true, qr_code: true, image_size: '300x300' })
 => "{\"kind\":\"urlshortener#url\",\"id\":\"http://goo.gl/MprR\",\"longUrl\":\"http://www.ruby-lang.org/\",\"qr_code\":\"http://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=http://goo.gl/MprR\"}"
+
+```
+
+To change the default shrinker (Google API):
+
+
+```ruby
+LinkShrink.configure do |c|
+  c.api = 'TinyUrl'
+end
+
+# or
+
+LinkShrink::Config.api = 'TinyUrl'
+
+LinkShrink.shrink_url('http://www.google.com')
+=> "http://tinyurl.com/1c2"
+
+
 ```
 
 
@@ -57,9 +76,14 @@ In your terminal:
 
     $ linkshrink http://www.rubyrogues.com
     http://goo.gl/Noh9X
+    
+    $ linkshrink --tinyurl http://www.rubyrogues.com
+    http://tinyurl.com/k2butj9
 
 ### Command-Line Options ###
 
+  * -t, --tinyurl     - use TinyUrl API
+  * -g, --google      - use Google API (Default)
   * -j, --json        - return JSON response
   * -q, --qrcode      - return QR Code
   * -h, --help        - show help message
