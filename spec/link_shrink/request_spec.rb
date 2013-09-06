@@ -11,10 +11,6 @@ describe LinkShrink::Request do
       .to eq(short_url)
     end
 
-    #it 'calls request and returns short link' do
-    #  expect(link_shrink.process_request(url)).to eq(short_url)
-    #end
-
     context 'when called with qr_code true, image_size 300x300' do
       it 'returns QR code with custom size' do
         options = { json: true, qr_code: true, image_size: '300x300' }
