@@ -59,7 +59,7 @@ describe LinkShrink::Shrinkers::Base do
   describe '#api_key' do
     context 'when not found' do
       it 'returns nil' do
-        link_shrink.stub(:sub_klass).and_return('Blah')
+        link_shrink.stub(:sub_klass).and_return('BlahBlah')
         expect(link_shrink.api_key).to eq(nil)
       end
     end
