@@ -131,4 +131,37 @@ http_interactions:
         \ ],\n  \"code\": 400,\n  \"message\": \"Bad Request\"\n }\n}\n"
     http_version: 
   recorded_at: Fri, 06 Sep 2013 08:25:30 GMT
+- request:
+    method: get
+    uri: http://tinyurl.com/api-create.php?url=http://www.google.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Powered-By:
+      - PHP/5.4.13
+      Content-Type:
+      - text/plain
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Fri, 06 Sep 2013 11:31:45 GMT
+      Server:
+      - TinyURL/1.6
+    body:
+      encoding: US-ASCII
+      string: http://tinyurl.com/1c2
+    http_version: 
+  recorded_at: Fri, 06 Sep 2013 11:31:47 GMT
 recorded_with: VCR 2.5.0
