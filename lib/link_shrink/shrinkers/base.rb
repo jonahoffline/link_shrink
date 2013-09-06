@@ -25,6 +25,8 @@ module LinkShrink
       end
 
       # Parameters to be used in API request
+      # @param params [Hash] parameters to be used
+      # @return [NilClass] nil if parameters are empty
       def body_parameters(params = {})
         nil if params.empty?
       end
@@ -32,8 +34,6 @@ module LinkShrink
       # Complete URL with query parameters
       def api_url
         api_key? ? base_url.concat(api_query_parameter) : base_url
-        #api_key? ? base_url : base_url.concat(api_query_parameter)
-        #base_url.concat(api_query_parameter)
       end
 
       # Predicate method for checking if the API key exists
@@ -49,20 +49,38 @@ module LinkShrink
       end
 
       # Encodes URL
+      # @param new_url [String] url to be parsed
+      # @return [String] parsed URL
       def sanitize_url(new_url)
         URI.encode(!!(new_url =~ /^(http?:\/\/)?/) ? new_url : "http://#{new_url}")
       end
 
+      # Returns HTTP method to be used in request
+      # @return [Symbol] http method
       def http_method
         :get
       end
 
+      # Returns Content-Type to be used in Request headers
+      # @return [String] content-type
       def content_type
         'application/json'
       end
 
+      # Sets URL to be used in request
+      # @see #sanitize_url
+      # @param new_url [String] url to be parsed
+      # @return [String] parsed url
       def url=(new_url)
         @url = sanitize_url(new_url)
+      end
+
+      # Method for generating QR codes or charts
+      # @param new_url [String] url to be processed
+      # @param image_size [Hash<symbol>] image size target
+      # @return [String] chart or qr code url
+      def generate_chart_url(new_url, image_size = {})
+        fail "#{__method__} not implemented"
       end
     end
   end
