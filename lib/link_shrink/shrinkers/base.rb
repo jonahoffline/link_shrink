@@ -9,8 +9,10 @@ module LinkShrink
       # Callback method that dynamically defines a sub_klass method for reference
       # @return [String] inherited class name
       def self.inherited(sub_klass)
-        define_method 'sub_klass' do
-          "#{sub_klass.name}"[/::(\w+)::(\w+)/, 2]
+        sub_klass.class_eval do
+          define_method 'sub_klass' do
+            @sub_klass = "#{sub_klass.name}"[/::(\w+)::(\w+)/, 2]
+          end
         end
       end
 
@@ -52,7 +54,7 @@ module LinkShrink
       # @param new_url [String] url to be parsed
       # @return [String] parsed URL
       def sanitize_url(new_url)
-        URI.encode(!!(new_url =~ /^(http?:\/\/)?/) ? new_url : "http://#{new_url}")
+        URI.encode(!(new_url =~ /^(http?:\/\/)?/) ? "http://#{new_url}" : new_url)
       end
 
       # Returns HTTP method to be used in request
