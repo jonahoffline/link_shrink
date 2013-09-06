@@ -36,7 +36,8 @@ describe LinkShrink::Shrinkers::Base do
 
     context 'when api_key is not found' do
       it 'returns base_url' do
-        link_shrink.stub(:sub_klass).and_return('Blahblah')
+        link_shrink.stub(:sub_klass).and_return('Blahblahblah')
+        link_shrink.stub(:api_key?).and_return(false)
         link_shrink.stub(:base_url).and_return('http://blah.io/api')
         expect(link_shrink.api_url).to eq('http://blah.io/api')
       end
@@ -51,7 +52,7 @@ describe LinkShrink::Shrinkers::Base do
 
   describe '#api_key?' do
     it 'returns false when API is not found' do
-      link_shrink.stub(:sub_klass).and_return('blahblah')
+      link_shrink.stub(:sub_klass).and_return('blahbla')
       expect(link_shrink.api_key?).to be_false
     end
   end
@@ -59,7 +60,7 @@ describe LinkShrink::Shrinkers::Base do
   describe '#api_key' do
     context 'when not found' do
       it 'returns nil' do
-        link_shrink.stub(:sub_klass).and_return('BlahBlah')
+        link_shrink.stub(:sub_klass).and_return('Blahh')
         expect(link_shrink.api_key).to eq(nil)
       end
     end
