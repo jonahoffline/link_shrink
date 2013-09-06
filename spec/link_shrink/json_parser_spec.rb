@@ -18,4 +18,14 @@ describe LinkShrink::JSONParser do
       .to eq('{"kind":"urlshortener#url","id":"http://goo.gl/fbsS","longUrl":"http://www.google.com/"}')
     end
   end
+
+  describe '.included' do
+    it 'extends self' do
+      dummy_class = Class.new do
+        include LinkShrink::JSONParser
+      end
+
+      expect(dummy_class.included_modules).to include(LinkShrink::JSONParser)
+    end
+  end
 end
