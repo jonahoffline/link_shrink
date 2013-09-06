@@ -14,13 +14,14 @@ describe LinkShrink::Config do
 
   describe '#api' do
     it 'sets api' do
-      link_shrink.api = LinkShrink::Shrinkers::Google
-      expect(link_shrink.api.class).to eq(LinkShrink::Shrinkers::Google)
+      link_shrink = LinkShrink
+      link_shrink.configure { |c| c.api = 'Google' }
+      expect(link_shrink::Config.api.class).to eq(LinkShrink::Shrinkers::Google)
     end
 
     context 'by default api is set to Google' do
       it 'returns api name' do
-        expect(link_shrink.api.class).to eq(LinkShrink::Shrinkers::Google)
+        expect(link_shrink.api).to be_a(LinkShrink::Shrinkers::Google)
       end
     end
   end
