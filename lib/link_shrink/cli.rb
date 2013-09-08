@@ -18,6 +18,7 @@ module LinkShrink
       @qr_code     = false
       @tiny_url    = false
       @google      = false
+      @is_gd       = false
       opts.version = LinkShrink::VERSION
       opts.banner  = <<MSG
 Usage: link_shrink [OPTION] [URL]
@@ -29,6 +30,10 @@ MSG
       opts.set_program_name 'LinkShrink'
       opts.on_head('-t', '--tinyurl', 'use TinyURL') do
         @tiny_url = :true
+      end
+
+      opts.on_head('-i', '--isgd', 'use Is.gd') do
+        @is_gd = :true
       end
 
       opts.on_head('-g', '--google', 'use Google (Default)') do
@@ -64,12 +69,24 @@ MSG
     end
 
     def process_url
-      LinkShrink.configure { |c| c.api = 'TinyUrl' } if @tiny_url
+      api = select_api
+      LinkShrink.configure { |c| c.api = api }
       LinkShrink.shrink_url(@args.last, { json: @json, qr_code: @qr_code })
     end
 
     def url_present?
       !!(@args.last =~ /^(http?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+    end
+
+    def select_api
+      case
+        when @tiny_url
+          'TinyUrl'
+        when @is_gd
+          'IsGd'
+        else
+          'Google'
+      end
     end
   end
 end
