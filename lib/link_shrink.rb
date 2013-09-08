@@ -6,6 +6,7 @@ require 'link_shrink/shrinkers/base'
 require 'link_shrink/shrinkers/google'
 require 'link_shrink/shrinkers/tinyurl'
 require 'link_shrink/shrinkers/isgd'
+require 'link_shrink/shrinkers/owly'
 require 'link_shrink/config'
 
 # @author Jonah Ruiz <jonah@pixelhipsters.com>
