@@ -22,10 +22,18 @@ module LinkShrink
       end
     end
 
+    def process_parse_options(parsed_json, shrinker)
+      if shrinker.collection_key && shrinker.url_key
+        parsed_json.fetch(shrinker.collection_key).fetch(shrinker.url_key)
+      else
+        parsed_json.fetch(shrinker.url_key)
+      end
+    end
+
     def process_response(response, options, shrinker, json = JSONParser)
       option      = Options.new(options)
       parsed_json = json.parse_json(response)
-      plain       = parsed_json['id']
+      plain       = process_parse_options(parsed_json, shrinker.class)
 
       if option.json? && option.qr_code?
         if option.image_size?
