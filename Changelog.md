@@ -1,5 +1,13 @@
 # LinkShrink Changelog
 
+## 0.0.5
+
+Released September 7, 2013 ([0.0.5](https://github.com/jonahoffline/link_shrink/tree/v0.0.5)).
+
+* Add Is.gd Shrinker
+* Add option for selecting Is.gd Shrinker in command-line application.
+* Update version to 0.0.5
+
 ## 0.0.4
 
 Released September 6, 2013 ([0.0.4](https://github.com/jonahoffline/link_shrink/tree/v0.0.4)).
