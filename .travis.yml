@@ -14,4 +14,5 @@ notifications:
     - irc.freenode.org#rubyonadhd
 env:
   global:
-    secure: bPqqN6twAJeRIpUEGozFIV3+dW2TSRxYQRrQhpzJ6Bx2ZXmk8UWl1O57Scf9/ZrCjo23MSvWKY1Rt1eyncaUVfzr4PjR6GjUwwdE7SPHQFKvGeNLIlJElzcz1ywcX6RU8+6JPYnx3NxR2O5VM8rf7wLwma00nuaDunM5NgKMMdQ=
+  - secure: bPqqN6twAJeRIpUEGozFIV3+dW2TSRxYQRrQhpzJ6Bx2ZXmk8UWl1O57Scf9/ZrCjo23MSvWKY1Rt1eyncaUVfzr4PjR6GjUwwdE7SPHQFKvGeNLIlJElzcz1ywcX6RU8+6JPYnx3NxR2O5VM8rf7wLwma00nuaDunM5NgKMMdQ=
+  - secure: JfAnh3FV1Q5Sz+QydZ7hFCCvCTiJoYqM4h0ztzZU/fqDNKo6d1/h8RWGZL++d7Ofl3Z7Jrfbj/1R4f8UiwNJVdqRMPgSrbbif8LfVBmsTtZm/gFcL5WFhm/kzIi7Jp7FmzNQc6Hx+EiI3T2mtLw51fi7lNNonVhevyEetUSvG2Q=
