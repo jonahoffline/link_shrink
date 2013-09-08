@@ -1,5 +1,16 @@
 # LinkShrink Changelog
 
+## 0.0.6
+
+Released September 8, 2013 ([0.0.6](https://github.com/jonahoffline/link_shrink/tree/v0.0.6)).
+
+* Add Owly Shrinker
+* Add option for selecting Owly Shrinker in command-line application.
+* Add new mini DSL to ::Shrinkers::Base for defining the response structure to be parsed.
+* Update Google class to use the response_options configuration.
+* Update README with a new options and configuration.
+* Update version to 0.0.6
+
 ## 0.0.5
 
 Released September 7, 2013 ([0.0.5](https://github.com/jonahoffline/link_shrink/tree/v0.0.5)).
