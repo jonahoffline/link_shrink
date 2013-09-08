@@ -3,6 +3,13 @@
 
 A Ruby Gem and Command-Line Application for shrinking those long and nasty links into a shorter URL
 
+## Supported Url Shortener APIs
+
+* Google
+* TinyUrl
+* IsGd
+* **More to come...**
+
 Installation
 ---------------------
 
@@ -63,7 +70,7 @@ end
 
 # or
 
-LinkShrink::Config.api = 'TinyUrl'
+LinkShrink::Config.api = 'IsGd'
 
 LinkShrink.shrink_url('http://www.google.com')
 => "http://tinyurl.com/1c2"
@@ -79,10 +86,18 @@ In your terminal:
     $ linkshrink --tinyurl http://www.rubyrogues.com
     http://tinyurl.com/k2butj9
 
+    $ linkshrink --isgd http://www.rubyrogues.com
+    http://is.gd/6ZNRWe
 ### Command-Line Options ###
 
+Shrinkers:
+
   * -t, --tinyurl     - use TinyUrl API
-  * -g, --google      - use Google API (Default)
+  * -i, --isgd		   - use Is.gd API
+  * -g, --google      - use Google API (Default) 
+
+Format and additional options:
+
   * -j, --json        - return JSON response
   * -q, --qrcode      - return QR Code
   * -h, --help        - show help message
