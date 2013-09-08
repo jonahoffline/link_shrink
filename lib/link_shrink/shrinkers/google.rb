@@ -5,6 +5,11 @@ module LinkShrink
     # @author Jonah Ruiz <jonah@pixelhipsters.com>
     # Implements Google's URL Shortener API
     class Google < Base
+      # Defines response structure to be parsed
+      response_options do
+        short_url  'id'
+      end
+
       # Returns URL base for API
       # @return [String] api base url
       def base_url
