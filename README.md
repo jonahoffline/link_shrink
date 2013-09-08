@@ -8,6 +8,7 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 * Google
 * TinyUrl
 * IsGd
+* Owly
 * **More to come...**
 
 Installation
@@ -19,6 +20,7 @@ Installation
 Setup
 -------
 
+## Google
 Works best with a Google URL API key. You can sign-up for a free one at
 [Google URL API](https://code.google.com/apis/console)
 
@@ -28,13 +30,21 @@ if the Terms of Service appear, read and accept them.
 2. Go to the [API Access pane](https://code.google.com/apis/console#access). The API key is near the bottom of that pane,
 in the section titled "Simple API Access."
 
-#### Configuration ####
+## Owly
+Sign-up for a free API key at [Owly](http://ow.ly/).
 
-Set your key as an environment variable:
+
+#### Configuration
+
+Set your apikey as an environment variable:
 
     $ export GOOGLE_URL_KEY='your_api_key_here'
+   
+    
+    $ export OWLY_URL_KEY='your_api_key_here'
 
 You could also save it in your ~/.bash_profile
+
 
 ## Usage ##
 
@@ -88,12 +98,17 @@ In your terminal:
 
     $ linkshrink --isgd http://www.rubyrogues.com
     http://is.gd/6ZNRWe
+    
+    $ linkshrink --owly http://www.rubyrogues.com
+    http://ow.ly/22rwSe
+    
 ### Command-Line Options ###
 
 Shrinkers:
 
   * -t, --tinyurl     - use TinyUrl API
   * -i, --isgd		   - use Is.gd API
+  * -om --owly        - use Owly API
   * -g, --google      - use Google API (Default) 
 
 Format and additional options:
