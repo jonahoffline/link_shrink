@@ -108,4 +108,15 @@ describe LinkShrink::Shrinkers::Base do
       end
     end
   end
+
+  describe '#collection_key' do
+    it 'returns nil' do
+      expect(link_shrink.class.collection_key).to eq(nil)
+    end
+  end
+  describe '#url_key' do
+    it 'returns key used to extract data from response' do
+      expect(link_shrink.class.url_key).to eq(nil)
+    end
+  end
 end
