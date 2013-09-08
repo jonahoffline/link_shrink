@@ -19,6 +19,7 @@ module LinkShrink
       @tiny_url    = false
       @google      = false
       @is_gd       = false
+      @owly        = false
       opts.version = LinkShrink::VERSION
       opts.banner  = <<MSG
 Usage: link_shrink [OPTION] [URL]
@@ -34,6 +35,10 @@ MSG
 
       opts.on_head('-i', '--isgd', 'use Is.gd') do
         @is_gd = :true
+      end
+
+      opts.on_head('-o', '--owly', 'use Owly') do
+        @owly = :true
       end
 
       opts.on_head('-g', '--google', 'use Google (Default)') do
@@ -84,6 +89,8 @@ MSG
           'TinyUrl'
         when @is_gd
           'IsGd'
+        when @owly
+          'Owly'
         else
           'Google'
       end
