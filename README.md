@@ -11,14 +11,15 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 * Owly
 * **More to come...**
 
-Installation
----------------------
+##Installation
+
 
     $ gem install link_shrink
 
 
-Setup
--------
+## Setup
+
+You can use any shrinker listed without worrying about the api key except for 'Owly'. While Google let's you use its api without an api key, but providing one will generate metrics in their dashboard.
 
 ## Google
 Works best with a Google URL API key. You can sign-up for a free one at
@@ -39,7 +40,6 @@ Sign-up for a free API key at [Owly](http://ow.ly/).
 Set your apikey as an environment variable:
 
     $ export GOOGLE_URL_KEY='your_api_key_here'
-   
     
     $ export OWLY_URL_KEY='your_api_key_here'
 
@@ -75,12 +75,12 @@ To change the default shrinker (Google API):
 
 ```ruby
 LinkShrink.configure do |c|
-  c.api = 'TinyUrl'
+  c.api = 'IsGd'
 end
 
 # or
 
-LinkShrink::Config.api = 'IsGd'
+LinkShrink::Config.api = 'TinyUrl'
 
 LinkShrink.shrink_url('http://www.google.com')
 => "http://tinyurl.com/1c2"
