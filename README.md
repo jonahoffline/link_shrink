@@ -11,7 +11,7 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 * Owly
 * **More to come...**
 
-##Installation
+## Installation
 
 
     $ gem install link_shrink
@@ -46,7 +46,7 @@ Set your apikey as an environment variable:
 You could also save it in your ~/.bash_profile
 
 
-## Usage ##
+## Usage
 
 Ruby:
 
@@ -102,7 +102,7 @@ In your terminal:
     $ linkshrink --owly http://www.rubyrogues.com
     http://ow.ly/22rwSe
     
-### Command-Line Options ###
+### Command-Line Options
 
 Shrinkers:
 
