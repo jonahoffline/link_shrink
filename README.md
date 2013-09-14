@@ -117,6 +117,10 @@ Format and additional options:
   * -q, --qrcode      - return QR Code
   * -h, --help        - show help message
 
+## Todo
+ * Batch list (with selected api or specified for operation)
+ * Save to file (html, text)
+
 ## Author
   * [Jonah Ruiz](http://www.pixelhipsters.com)
 
