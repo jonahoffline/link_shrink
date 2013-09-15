@@ -120,6 +120,7 @@ Format and additional options:
 ## Todo
  * Batch list (with selected api or specified for operation)
  * Save to file (html, text)
+ * Bitly Shrinker API
 
 ## Author
   * [Jonah Ruiz](http://www.pixelhipsters.com)
