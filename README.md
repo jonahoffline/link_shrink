@@ -132,3 +132,6 @@ Format and additional options:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jonahoffline/link_shrink/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
