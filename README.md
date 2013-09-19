@@ -121,6 +121,7 @@ Format and additional options:
  * Batch list (with selected api or specified for operation)
  * Save to file (html, text)
  * Bitly Shrinker API
+ * Parallel HTTP Requests
 
 ## Author
   * [Jonah Ruiz](http://www.pixelhipsters.com)
