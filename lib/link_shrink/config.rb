@@ -1,11 +1,11 @@
 module LinkShrink
+  # @author Jonah Ruiz <jonah@pixelhipsters.com>
+  # Configurable module for Shrinkers-related settings
   module Config
-    # @author Jonah Ruiz <jonah@pixelhipsters.com>
-    # Configurable module for integrating with other URL APIs
     extend self
 
-    # Returns and Sets API key to be used
-    # @param api_key [String] API key to be used
+    # @!attribute api_key
+    # @return [String] API key to be used
     attr_accessor :api_key
 
     # Sets API to be used
@@ -15,7 +15,7 @@ module LinkShrink
     end
 
     # Returns API used
-    # Unless an API is defined, it returns Google by default
+    #   Uses Google by default
     # @return [LinkShrink::Shrinkers::Google] instance
     def api
       @api || LinkShrink::Shrinkers::Google.new
