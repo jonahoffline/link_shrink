@@ -3,10 +3,31 @@ require 'uri'
 module LinkShrink
   module Shrinkers
     # @author Jonah Ruiz <jonah@pixelhipsters.com>
-    # an Abstract Base class for implementing other URL APIs
+    #   Base class for implementing other URL APIs
+    #
+    # @abstract Subclass and override methods as needed
+    # @example Implement a Shrinker class
+    #   class Shorty < Base
+    #
+    #    def base_url
+    #      'http://shorty.com/api/2.0/shorten'
+    #    end
+    #
+    #    def api_query_parameter
+    #      "?url=#{url}"
+    #    end
+    #
+    #    def api_url
+    #      base_url.concat api_query_parameter
+    #    end
+    #  end
     class Base
+
+      # @!attribute url
+      # @return [String] long url to shrink
       attr_reader :url
-      # Callback method that dynamically defines a sub_klass method for reference
+
+      # Callback method to define a sub_klass method for reference
       # @return [String] inherited class name
       def self.inherited(sub_klass)
         sub_klass.class_eval do
@@ -16,12 +37,18 @@ module LinkShrink
         end
       end
 
-      # URL base for API
+      # @overload base_url
+      #   URL base for API requests
+      # @raise [String] unless implemented on inheriting class
+      # @return [String] api base URL
       def base_url
         fail "#{__method__} not implemented"
       end
 
-      # URL query parameters
+      # @overload api_query_parameter
+      #   URL query parameters
+      # @raise [String] unless implemented on inheriting class
+      # @return [String] query parameters to be used in request
       def api_query_parameter
         fail "#{__method__} not implemented"
       end
@@ -54,16 +81,21 @@ module LinkShrink
       # @param new_url [String] url to be parsed
       # @return [String] parsed URL
       def sanitize_url(new_url)
-        URI.encode(!(new_url =~ /^(http?:\/\/)?/) ? "http://#{new_url}" : new_url)
+        URI.encode(
+          !(new_url =~ /^(http?:\/\/)?/) ? "http://#{new_url}" : new_url
+        )
       end
 
-      # Returns HTTP method to be used in request
+      # @overload http_method
+      #   Returns HTTP method to be used in request
+      #     override +:get+ with +:post+
       # @return [Symbol] http method
       def http_method
         :get
       end
 
-      # Returns Content-Type to be used in Request headers
+      # @overload content_type
+      #   Returns Content-Type to be used in Request headers
       # @return [String] content-type
       def content_type
         'application/json'
@@ -86,6 +118,7 @@ module LinkShrink
       end
 
       # Handles DSL definition of response structure to be parsed (JSON)
+      # @!group ShrinkerDSL
       class << self
         attr_accessor :collection_key, :url_key
 
@@ -106,6 +139,8 @@ module LinkShrink
           self.url_key = new_url_key
         end
       end
+      # @!endgroup
+
     end
   end
 end
