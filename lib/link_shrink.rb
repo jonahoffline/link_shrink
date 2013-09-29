@@ -1,5 +1,6 @@
 require 'link_shrink/version'
 require 'link_shrink/options'
+require 'link_shrink/util'
 require 'link_shrink/request'
 require 'link_shrink/json_parser'
 require 'link_shrink/shrinkers/base'
