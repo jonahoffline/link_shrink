@@ -24,8 +24,6 @@ module LinkShrink
   # @return [String] generated short URL or JSON response
   def shrink_url(url, options = { json: false, qr_code: false })
     process_request(url, options)
-  rescue
-    'Problem generating short URL. Try again.'
   end
 
   # Returns a QR code URL
