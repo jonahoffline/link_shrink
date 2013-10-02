@@ -120,7 +120,7 @@ module LinkShrink
       # Handles DSL definition of response structure to be parsed (JSON)
       # @!group ShrinkerDSL
       class << self
-        attr_accessor :collection_key, :url_key
+        attr_accessor :collection_key, :url_key, :error_key
 
         # Helper method that yields into the other response structure methods
         def response_options(&block)
@@ -134,9 +134,15 @@ module LinkShrink
         end
 
         # Defines url_key in response
-        # @param new_url_key [String] url_key
-        def short_url(new_url_key)
-          self.url_key = new_url_key
+        # @param short_url_key [String] url_key
+        def short_url(short_url_key)
+          self.url_key = short_url_key
+        end
+
+        # Defines error_key in response
+        # @param new_error_key [String] error_key
+        def error(new_error_key)
+          self.error_key = new_error_key
         end
       end
       # @!endgroup
