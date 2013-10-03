@@ -65,7 +65,7 @@ describe LinkShrink::Shrinkers::Owly do
     it 'returns correct shortUrl' do
       LinkShrink.configure { |config| config.api = 'Owly' }
       expect(LinkShrink.shrink_url('www.google.com'))
-      .to eq('http://ow.ly/22rqvf')
+        .to eq('http://ow.ly/22rqvf')
     end
   end
 end
