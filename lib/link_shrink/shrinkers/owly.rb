@@ -9,6 +9,7 @@ module LinkShrink
       response_options do
         collection 'results'
         short_url  'shortUrl'
+        error
       end
 
       # Returns URL base for API
