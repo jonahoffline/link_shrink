@@ -27,22 +27,6 @@ describe LinkShrink::Shrinkers::Google do
     end
   end
 
-  describe '#generate_chart_url' do
-    let(:chart_url) { "http://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=http://goo.gl/fbsS" }
-
-    it 'returns a QR code' do
-      expect(link_shrink.generate_chart_url(short_url))
-      .to eq(qrcode_url)
-    end
-
-    context 'when called with optional image_size argument' do
-      it 'returns a QR code with custom image size' do
-        expect(link_shrink.generate_chart_url(short_url, '300x300'))
-        .to eq(chart_url)
-      end
-    end
-  end
-
   describe '#body_parameters' do
     it 'returns body parameters for API request' do
       link_shrink.stub(:url).and_return('http://www.google.com')
