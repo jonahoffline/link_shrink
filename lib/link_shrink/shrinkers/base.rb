@@ -141,7 +141,7 @@ module LinkShrink
 
         # Defines error_key in response
         # @param new_error_key [String] error_key
-        def error(new_error_key)
+        def error(new_error_key = 'error')
           self.error_key = new_error_key
         end
       end
