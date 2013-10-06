@@ -34,9 +34,7 @@ MSG
       {}.merge({
         api: apis.merge(Google: true),
         banner: banner,
-        version: LinkShrink::VERSION,
-        json: false,
-        qr_code: false
+        version: LinkShrink::VERSION
       })
     end
 
@@ -52,14 +50,6 @@ MSG
         opts.on_head("-#{arg[0]}", "--#{arg}", argument_text_for(k)) do
           options.api[k] = true
         end
-      end
-
-      opts.on_head('-j', '--json', 'return JSON response') do
-        options.json = true
-      end
-
-      opts.on_head('-q', '--qrcode', 'return QR Code') do
-        options.qr_code = :true if options.google
       end
 
       opts.on_tail('-v', '--version',
@@ -90,8 +80,7 @@ MSG
     def process_url
       LinkShrink.configure { |config| config.api = select_api }
 
-      LinkShrink.shrink_url(@args.last,
-        { json: options.json, qr_code: options.qr_code })
+      LinkShrink.shrink_url(@args.last)
     end
 
     def url_present?
