@@ -10,51 +10,35 @@ module LinkShrink
 
     module_function
 
-    def process_request(url, options, shrinker = LinkShrink::Config.api)
-      parse(request(url, shrinker).body, options, shrinker)
+    def process_request(url, shrinker = LinkShrink::Config.api)
+      parse(request(url, shrinker).body, shrinker)
     end
 
-    def parse(response, options, shrinker)
+    def parse(response, shrinker)
       if shrinker.content_type.eql?('text/plain')
         response
       else
-        process_response(response, options, shrinker)
+        process_response(response, shrinker)
       end
+    rescue
+      "Error #{response}"
     end
 
     def process_parse_options(parsed_json, shrinker)
       if shrinker.collection_key && shrinker.url_key
-        parsed_json.fetch(shrinker.collection_key).fetch(shrinker.url_key)
+        parsed_json
+          .fetch(shrinker.collection_key)
+          .fetch(shrinker.url_key)
       else
         parsed_json.fetch(shrinker.url_key)
       end
+    rescue
+      parsed_json.fetch(shrinker.error_key) { 'Error parsing the request!'}
     end
 
-    def process_response(response, options, shrinker, json = JSONParser)
-      option      = Options.new(options)
+    def process_response(response, shrinker, json = JSONParser)
       parsed_json = json.parse_json(response)
-      plain       = process_parse_options(parsed_json, shrinker.class)
-
-      if option.json? && option.qr_code?
-        if option.image_size?
-          return parsed_json.merge(qr_code: shrinker.generate_chart_url(plain, options.fetch(:image_size))).to_json
-        end
-        return parsed_json.merge(qr_code: shrinker.generate_chart_url(plain)).to_json
-      end
-
-      case
-        when option.json?
-          json.cleanup_json(response)
-        when option.qr_code?
-          if option.image_size?
-            return shrinker.generate_chart_url(plain, options.fetch(:image_size))
-          end
-          shrinker.generate_chart_url(plain)
-        when option.image_size?
-          shrinker.generate_chart_url(plain, options.fetch(:image_size))
-        else
-          plain
-      end
+      process_parse_options(parsed_json, shrinker.class)
     end
 
     # Calls URL API
