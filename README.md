@@ -19,7 +19,8 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 
 ## Setup
 
-You can use any shrinker listed without worrying about the api key except for 'Owly'. While Google let's you use its api without an api key, but providing one will generate metrics in their dashboard.
+You can use any shrinker listed without worrying about the api key except for 'Owly'.
+Google let's you use its api without an api key, but providing one will generate metrics in their dashboard.
 
 ## Google
 Works best with a Google URL API key. You can sign-up for a free one at
@@ -43,7 +44,7 @@ Set your apikey as an environment variable:
     
     $ export OWLY_URL_KEY='your_api_key_here'
 
-You could also save it in your ~/.bash_profile
+You could also save it in your `~/.bash_profile` or `~/.zshrc`
 
 
 ## Usage
@@ -55,18 +56,6 @@ require 'link_shrink'
 
 LinkShrink.shrink_url("http://www.ruby-lang.org")
 => "http://goo.gl/QuXj"
-
-LinkShrink.shrink_url("http://www.ruby-lang.org", { :json => true })
-=> "{\"kind\":\"urlshortener#url\",\"id\":\"http://goo.gl/MprR\",\"longUrl\":\"http://www.ruby-lang.org/\"}"
-
-LinkShrink.shrink_url("http://www.ruby-lang.org", { :qr_code => true })
-=> "http://goo.gl/QuXj.qr"
-
-LinkShrink.shrink_url("http://www.ruby-lang.org", { :qr_code => true, image_size: '200x200' })
-=> "http://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=H&chl=http://goo.gl/MprR"
-
-LinkShrink.shrink_url("http://www.ruby-lang.org", { json: true, qr_code: true, image_size: '300x300' })
-=> "{\"kind\":\"urlshortener#url\",\"id\":\"http://goo.gl/MprR\",\"longUrl\":\"http://www.ruby-lang.org/\",\"qr_code\":\"http://chart.googleapis.com/chart?cht=qr&chs=300x300&choe=UTF-8&chld=H&chl=http://goo.gl/MprR\"}"
 
 ```
 
@@ -111,10 +100,8 @@ Shrinkers:
   * -om --owly        - use Owly API
   * -g, --google      - use Google API (Default) 
 
-Format and additional options:
+Additional options:
 
-  * -j, --json        - return JSON response
-  * -q, --qrcode      - return QR Code
   * -h, --help        - show help message
 
 ## Todo
