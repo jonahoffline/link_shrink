@@ -28,16 +28,6 @@ module LinkShrink
         { 'longUrl' => url }.to_json
       end
 
-      # Generates QR code URL
-      # @return [String] QR code url with '150x150' or custom image size
-      def generate_chart_url(new_url, image_size = {})
-        return "#{new_url}.qr" if image_size.empty?
-
-        chart_url = 'http://chart.googleapis.com/chart'
-        params    = "?cht=qr&chs=#{image_size}&choe=UTF-8&chld=H&chl=#{new_url}"
-        chart_url.concat(params)
-      end
-
       # Returns HTTP method to be used in request
       # @return [Symbol] post http method
       def http_method
