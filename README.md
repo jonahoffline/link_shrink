@@ -9,6 +9,7 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 * TinyUrl
 * IsGd
 * Owly
+* Karmacracy
 * **More to come...**
 
 ## Installation
@@ -19,8 +20,7 @@ A Ruby Gem and Command-Line Application for shrinking those long and nasty links
 
 ## Setup
 
-You can use any shrinker listed without worrying about the api key except for 'Owly'.
-Google let's you use its api without an api key, but providing one will generate metrics in their dashboard.
+You can use any shrinker listed without worrying about the api key except for **Owly** and **Karmacracy**. Google let's you use its api without an api key, but providing one will generate metrics in their dashboard.
 
 ## Google
 Works best with a Google URL API key. You can sign-up for a free one at
@@ -35,6 +35,8 @@ in the section titled "Simple API Access."
 ## Owly
 Sign-up for a free API key at [Owly](http://ow.ly/).
 
+## Karmacracy
+Sign-up for a free API key at [Karmacracy](http://karmacracy.com/).
 
 #### Configuration
 
@@ -43,6 +45,9 @@ Set your apikey as an environment variable:
     $ export GOOGLE_URL_KEY='your_api_key_here'
     
     $ export OWLY_URL_KEY='your_api_key_here'
+    
+    $ export KARMACRACY_URL_KEY='your_api_key_here'
+    $ export KARMACRACY_USERNAME='your_username_here'
 
 You could also save it in your `~/.bash_profile` or `~/.zshrc`
 
@@ -98,7 +103,8 @@ Shrinkers:
   * -t, --tinyurl     - use TinyUrl API
   * -i, --isgd		   - use Is.gd API
   * -om --owly        - use Owly API
-  * -g, --google      - use Google API (Default) 
+  * -g, --google      - use Google API (Default)
+  * -k  --karmacracy  - use Karmacracy API
 
 Additional options:
 
