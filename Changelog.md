@@ -1,5 +1,12 @@
 # LinkShrink Changelog
 
+## 0.0.8
+
+Released January 19, 2014 ([0.0.7](https://github.com/jonahoffline/link_shrink/tree/v0.0.8)).
+
+* Add Karmacracy Shrinker (available automatically in the command-line)
+* Update version to 0.0.8
+
 ## 0.0.7
 
 Released January 19, 2014 ([0.0.7](https://github.com/jonahoffline/link_shrink/tree/v0.0.7)).
