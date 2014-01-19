@@ -1,5 +1,26 @@
 # LinkShrink Changelog
 
+## 0.0.7
+
+Released January 19, 2014 ([0.0.7](https://github.com/jonahoffline/link_shrink/tree/v0.0.7)).
+
+* Remove old features documentation and examples from README
+* Refactor LinkShrink, Request modules
+* Refactor LinkShrink::CLI class and update documentation
+* Remove json and qr_code options from CLI class
+* Remove charts, qr_codes and json options tests
+* Add error parameter to :response_options block in Owly Shrinker
+* Fix indentation in Owly spec
+* Add error_key and error for internal DSL in Shrinkers::Base
+* Remove rescue method from :shrink_url
+* Add Util module for helper methods
+* Update documentation for ::Shrinkers::Base class
+* Update documentation in Config module
+* Move shrinkers specs into its own shrinkers folder to mirror lib structure
+* Add a Bitdeli badge to README
+* Update development dependencies for `webmock`, `vcr` and `simplecov`
+* Update version to 0.0.7
+
 ## 0.0.6
 
 Released September 8, 2013 ([0.0.6](https://github.com/jonahoffline/link_shrink/tree/v0.0.6)).
